@@ -1,0 +1,67 @@
+def remove_character_from_string(input_string, char_to_remove):
+    new_string = input_string.replace(char_to_remove, "")
+    return new_string
+
+def is_palindrome(input_string):
+    clean_string = ''.join(input_string.split()).lower()
+    return clean_string == clean_string[::-1]
+
+def is_vowel(character):
+    vowels = "aeiouAEIOU"
+    return character in vowels
+
+def replace_spaces(input_string):
+    new_string = input_string.replace(" ", "_")
+    return new_string
+
+def count_characters(input_string):
+    alphabet_count = sum(c.isalpha() for c in input_string)
+    digit_count = sum(c.isdigit() for c in input_string)
+    special_count = len(input_string) - alphabet_count - digit_count
+    return alphabet_count, digit_count, special_count
+
+def remove_spaces(input_string):
+    new_string = input_string.replace(" ", "")
+    return new_string
+
+def sum_of_integers(input_string):
+    numbers = [int(num) for num in input_string.split() if num.isdigit()]
+    return sum(numbers)
+
+def remove_repeated_characters(input_string):
+    unique_chars = []
+    for char in input_string:
+        if char not in unique_chars:
+            unique_chars.append(char)
+    return ''.join(unique_chars)
+
+def count_occurrence(input_string, target_char):
+    return input_string.count(target_char)
+
+def are_anagrams(str1, str2):
+    return sorted(str1) == sorted(str2)
+
+def first_alphabet_symbols(input_string):
+    alphabet_part = ''.join([char for char in input_string if char.isalpha()])
+    numeric_part = ''.join([char for char in input_string if char.isdigit()])
+    return alphabet_part + numeric_part
+
+# Example string
+input_string = "Hello World! 123"
+char_to_remove = "o"
+target_char = "l"
+str1 = "listen"
+str2 = "silent"
+
+print("After removing character:", remove_character_from_string(input_string, char_to_remove))
+print("Is palindrome:", is_palindrome("A man a plan a canal Panama"))
+print("Is 'A' a vowel?", is_vowel("A"))
+print("After replacing spaces:", replace_spaces(input_string))
+alphabet_count, digit_count, special_count = count_characters(input_string)
+print("Alphabets:", alphabet_count, "Digits:", digit_count, "Special:", special_count)
+print("After removing spaces:", remove_spaces(input_string))
+print("Sum of integers:", sum_of_integers(input_string))
+print("After removing repeated characters:", remove_repeated_characters(input_string))
+print("Occurrence of '{}' in string: {}".format(target_char, count_occurrence(input_string, target_char)))
+print("Are '{}' and '{}' anagrams? {}".format(str1, str2, are_anagrams(str1, str2)))
+print("First alphabet symbols followed by numeric values:", first_alphabet_symbols(input_string))
